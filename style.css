@@ -1,0 +1,159 @@
+@font-face {
+    font-family: myFont;
+    src: url(./SF-Pro-Display-Regular.ttf);
+  }
+body{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    font-family: myFont;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+    -webkit-user-drag: none;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+#gameboard{
+    display: grid;
+    height: 480px;
+    width: 480px;
+    border-radius: 50%;
+    grid-template-rows: repeat(3,150px);
+    grid-template-columns: repeat(3,150px);
+    gap: 17px;
+    background-color: blueviolet;
+}
+
+#reset {
+    background-color: #35363a;
+    transform: scale(0);
+    display: grid;
+    grid-template-rows: 50px 50px;
+    grid-template-columns: 0.33fr 0.66fr;
+    border-radius: 15px;
+    width: 300px;
+    position: absolute;
+    top: 50px;
+    height: 100px;
+    transition: all 0.2s;
+}
+#reset.active {
+    transform: scale(1);
+}
+#resetButton{
+    grid-row: 2/-1;
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+#resetButton button {
+    position: absolute;
+    top: 10px;
+}
+#aimode {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    gap: 20px;
+    transition: all 1s ease-in-out;
+   
+}
+#aimode.active{
+    background: linear-gradient(73deg, yellow,red, rgb(58, 58, 187));
+    background-size: 400% 400%;
+    animation: backgroundGradient 3s ease infinite;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+@keyframes backgroundGradient {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+#ai-button {
+    background-color: white;
+    width: 55px;
+    height: 25px;
+    position: relative;
+    border-radius: 15px;
+}
+#ai-button::before{
+    content: "";
+    width: 33px;
+    position: absolute;
+    border-radius: 50%;
+    left: -3px;
+    top: -3px;
+    height: 33px;
+    background-color: blueviolet;
+    transition: all 100ms ease-in-out;
+}
+#ai-button.active::before{
+    left: 25px;
+    top: -3px;
+}
+#win {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 1.2em;
+}
+#mark {
+    grid-row: 1/3;
+    display: flex;
+    color: rgb(0, 0, 0);
+    justify-content: center;
+    align-items: center;
+    font-size: 5em;
+}
+.grid-item {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    align-items: center;
+    font-size: 6em;
+    color: rgb(192, 58, 58);
+    width: 150px;
+    height: 150px;
+}
+
+@media only screen and (max-width: 500px) {
+    #gameboard{
+        height: 300px;
+        width: 300px;
+        display: grid;
+        border-radius: 50%;
+        grid-template-rows: repeat(3,91px);
+        grid-template-columns: repeat(3,91px);
+        gap: 14px;
+        background-color: blueviolet;
+    }
+    .grid-item {
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        background-color: black;
+        align-items: center;
+        font-size: 3em;
+        color: rgb(192, 58, 58);
+        width: 91px;
+        height: 91px;
+    }
+}
+
